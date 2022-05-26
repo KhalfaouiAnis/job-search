@@ -10,17 +10,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    components: HomeView,
+    component: HomeView,
   },
   {
     path: '/jobs/results',
     name: 'JobResults',
-    components: JobResultsView,
+    component: JobResultsView,
   },
   {
     path: '/jobs/results/:id',
     name: 'JobListing',
-    components: JobView,
+    component: JobView,
   },
 ]
 
