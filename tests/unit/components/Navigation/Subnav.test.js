@@ -3,9 +3,16 @@ import Subnav from '@/components/Navigation/Subnav'
 
 describe('Subnav', () => {
   describe('when user is on job page', () => {
-    it('displays hob count', () => {
+    it('displays job count', () => {
+      const $route = {
+        name: 'JobResults',
+      }
+
       const wrapper = mount(Subnav, {
         global: {
+          mocks: {
+            $route,
+          },
           stubs: {
             fontAwesomeIcon: true,
           },
@@ -20,10 +27,18 @@ describe('Subnav', () => {
       expect(jobCount.exists()).toBe(true)
     })
   })
+
   describe('when user is not on job page', () => {
     it('does not display job count', () => {
+      const $route = {
+        name: 'Home',
+      }
+
       const wrapper = mount(Subnav, {
         global: {
+          mocks: {
+            $route,
+          },
           stubs: {
             fontAwesomeIcon: true,
           },
