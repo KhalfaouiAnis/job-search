@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653586930364" clover="3.2.0">
-  <project timestamp="1653586930365" name="All files">
-    <metrics statements="14" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5" elements="20" coveredelements="18" complexity="0" loc="14" ncloc="14" packages="3" files="5" classes="5"/>
+<coverage generated="1653656947103" clover="3.2.0">
+  <project timestamp="1653656947104" name="All files">
+    <metrics statements="16" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6" elements="23" coveredelements="21" complexity="0" loc="16" ncloc="16" packages="4" files="6" classes="6"/>
+    <package name="components.JobResults">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="JobListing.vue" path="C:\Users\Anis\Documents\job-search\src\components\JobResults\JobListing.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+      </file>
+    </package>
     <package name="components.Navigation">
       <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="ProfileImage.vue" path="C:\Users\Anis\Documents\job-search\src\components\Navigation\ProfileImage.vue">
