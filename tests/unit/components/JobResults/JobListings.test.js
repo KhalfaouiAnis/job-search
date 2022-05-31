@@ -10,7 +10,7 @@ describe('JobListings', () => {
     },
   })
   const createStore = (config = {}) => ({
-    state: { jobs: Array(15).fill({}) },
+    getters: { FILTER_JOBS_BY_ORGANIZATIONS: [] },
     dispatch: jest.fn(),
     ...config,
   })
@@ -43,7 +43,9 @@ describe('JobListings', () => {
     const $route = createRoute(queryParams)
     const numberOfJobsInStore = 15
     const $store = createStore({
-      state: { jobs: Array(numberOfJobsInStore).fill({}) },
+      getters: {
+        FILTER_JOBS_BY_ORGANIZATIONS: Array(numberOfJobsInStore).fill({}),
+      },
     })
     const wrapper = shallowMount(JobListings, createConfig($route, $store))
     await flushPromises()
@@ -85,7 +87,9 @@ describe('JobListings', () => {
       const $route = createRoute(queryParams)
       const numberOfJobsInStore = 15
       const $store = createStore({
-        state: { jobs: Array(numberOfJobsInStore).fill({}) },
+        getters: {
+          FILTER_JOBS_BY_ORGANIZATIONS: Array(numberOfJobsInStore).fill({}),
+        },
       })
       const wrapper = shallowMount(JobListings, createConfig($route, $store))
       const nextPage = wrapper.find("[data-test='next-page-link']")
@@ -99,7 +103,9 @@ describe('JobListings', () => {
       const $route = createRoute(queryParams)
       const numberOfJobsInStore = 15
       const $store = createStore({
-        state: { jobs: Array(numberOfJobsInStore).fill({}) },
+        getters: {
+          FILTER_JOBS_BY_ORGANIZATIONS: Array(numberOfJobsInStore).fill({}),
+        },
       })
       const wrapper = shallowMount(JobListings, createConfig($route, $store))
       await flushPromises()
@@ -111,7 +117,9 @@ describe('JobListings', () => {
       const $route = createRoute(queryParams)
       const numberOfJobsInStore = 15
       const $store = createStore({
-        state: { jobs: Array(numberOfJobsInStore).fill({}) },
+        getters: {
+          FILTER_JOBS_BY_ORGANIZATIONS: Array(numberOfJobsInStore).fill({}),
+        },
       })
       const wrapper = shallowMount(JobListings, createConfig($route, $store))
       await flushPromises()

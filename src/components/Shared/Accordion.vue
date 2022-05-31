@@ -32,12 +32,12 @@ export default {
   },
   computed: {
     caretIcon() {
-      return this.isOpen ? ['fas', 'anglr-up'] : ['fas', 'anglr-down']
+      return this.isOpen ? ['fas', 'angle-up'] : ['fas', 'angle-down']
     },
   },
   methods: {
     open() {
-      return !this.isOpen
+      this.isOpen = !this.isOpen
     },
   },
 }

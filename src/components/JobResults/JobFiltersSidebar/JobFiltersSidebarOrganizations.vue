@@ -3,21 +3,23 @@
     <div class="mt-5">
       <fieldset>
         <ul class="flex flex-row flex-wrap">
-          <li class="w-1/2 h-8">
-            <input id="vuetube" type="checkbox" class="mr-3" />
-            <label for="vuetube">VueTube</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input id="between vue" type="checkbox" class="mr-3" />
-            <label for="between vue">between vue</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input id="et vue brute" type="checkbox" class="mr-3" />
-            <label for="et vue brute">et vue brute</label>
-          </li>
-          <li class="w-1/2 h-8">
-            <input id="vue and a half men" type="checkbox" class="mr-3" />
-            <label for="vue and a half men">vue and a half men</label>
+          <li
+            v-for="organization in UNIQUE_ORGANIZATIONS"
+            :key="organization"
+            class="w-1/2 h-8"
+          >
+            <input
+              :id="organization"
+              v-model="selectedOrganizations"
+              :value="organization"
+              type="checkbox"
+              :data-test="organization"
+              class="mr-3"
+              @change="selectOrganizations"
+            />
+            <label :for="organization" data-test="organization">{{
+              organization
+            }}</label>
           </li>
         </ul>
       </fieldset>
@@ -26,11 +28,31 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
+import {
+  ADD_SELECTED_ORGANIZATIONS,
+  UNIQUE_ORGANIZATIONS,
+} from '@/store/constants'
 import Accordion from '@/components/Shared/Accordion.vue'
+
 export default {
   name: 'JobFiltersSidebarOrganizations',
   components: {
     Accordion,
+  },
+  data() {
+    return {
+      selectedOrganizations: [],
+    }
+  },
+  computed: {
+    ...mapGetters([UNIQUE_ORGANIZATIONS]),
+  },
+  methods: {
+    ...mapMutations([ADD_SELECTED_ORGANIZATIONS]),
+    selectOrganizations() {
+      this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations)
+    },
   },
 }
 </script>
