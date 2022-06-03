@@ -30,14 +30,14 @@ describe('getters', () => {
     })
   })
 
-  describe('INCLUDE_JOB_BY_ORGANIZATIONS', () => {
+  describe('INCLUDE_JOB_BY_ORGANIZATION', () => {
     describe('when the user has not selected any organizations', () => {
       it('includes job', () => {
         const state = {
           selectedOrganizations: [],
         }
         const job = { organization: 'Google' }
-        const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATIONS(state)(job)
+        const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job)
         expect(includeJob).toBe(true)
       })
     })
@@ -47,7 +47,7 @@ describe('getters', () => {
         selectedOrganizations: ['Google', 'Microsoft'],
       }
       const job = { organization: 'Google' }
-      const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATIONS(state)(job)
+      const includeJob = getters.INCLUDE_JOB_BY_ORGANIZATION(state)(job)
       expect(includeJob).toBe(true)
     })
   })

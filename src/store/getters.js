@@ -2,7 +2,7 @@ import {
   UNIQUE_ORGANIZATIONS,
   UNIQUE_JOB_TYPES,
   FILTERED_JOBS,
-  INCLUDE_JOB_BY_ORGANIZATIONS,
+  INCLUDE_JOB_BY_ORGANIZATION,
   INCLUDE_JOB_BY_JOB_TYPE,
 } from '@/store/constants'
 
@@ -21,7 +21,7 @@ const getters = {
     return uniqueJobTypes
   },
 
-  [INCLUDE_JOB_BY_ORGANIZATIONS]: (state) => (job) => {
+  [INCLUDE_JOB_BY_ORGANIZATION]: (state) => (job) => {
     if (state.selectedOrganizations.length === 0) return true
     return state.selectedOrganizations.includes(job.organization)
   },
