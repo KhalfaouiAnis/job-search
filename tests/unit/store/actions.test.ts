@@ -3,15 +3,18 @@ import actions from '@/store/actions'
 import getJobs from '@/api/getJobs'
 jest.mock('@/api/getJobs')
 
+const getJobsMock = getJobs as jest.Mock
+
 describe('actions', () => {
   describe('fetch jobs', () => {
     beforeEach(() => {
-      getJobs.mockResolvedValue([{ id: 1, title: 'Java Engineer' }])
+      getJobsMock.mockResolvedValue([{ id: 1, title: 'Java Engineer' }])
     })
 
     it('makes a request to fetch jobs', async () => {
       const context = { commit: jest.fn() }
       await actions.FETCH_JOBS(context)
+      // we can use either getJobs or getJobsMock
       expect(getJobs).toHaveBeenCalled()
     })
 
