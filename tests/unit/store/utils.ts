@@ -7,6 +7,7 @@ export const createState = (config: Partial<GlobalState> = {}): GlobalState => {
   const initialState = state()
   return { ...initialState, ...config }
 }
+
 export const createJob = (config: Partial<Job> = {}): Job => ({
   id: 1,
   title: 'Angular Developer',

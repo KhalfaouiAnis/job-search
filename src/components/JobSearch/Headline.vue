@@ -12,19 +12,31 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import nextElementInList from '@/utils/nextElementInList.js'
 
-export default {
+interface ActionClasses {
+  [x: string]: boolean
+}
+
+// optionnal and undefined are the same
+// interval?: number OR interval: number | undefined
+interface Data {
+  action: string
+  interval?: number
+}
+
+export default defineComponent({
   name: 'Headline',
-  data() {
+  data(): Data {
     return {
       action: 'Build',
-      interval: null,
+      interval: undefined,
     }
   },
   computed: {
-    actionClasses() {
+    actionClasses(): ActionClasses {
       return {
         [this.action.toLowerCase()]: true,
       }
@@ -44,7 +56,7 @@ export default {
       }, 3000)
     },
   },
-}
+})
 </script>
 
 <style scoped>

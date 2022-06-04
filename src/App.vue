@@ -5,13 +5,14 @@
   </div>
 </template>
 
-<script>
+<script lagn="ts">
+import { defineComponent } from 'vue'
 import MainNav from '@/components/Navigation/MainNav.vue'
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     MainNav,
   },
-}
+})
 </script>

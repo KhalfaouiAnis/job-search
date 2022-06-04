@@ -6,7 +6,7 @@ describe('mutations', () => {
     it('logs the user in', () => {
       const startingState = createState({ isLoggedIn: false })
       mutations.LOGIN_USER(startingState)
-      expect(startingState.isLoggedIn).toBe({ isLoggedIn: true })
+      expect(startingState.isLoggedIn).toBe(true)
     })
   })
 
@@ -16,7 +16,7 @@ describe('mutations', () => {
       const job1 = createJob()
       const job2 = createJob()
       mutations.RECEIVE_JOBS(startingState, [job1, job2])
-      expect(startingState.jobs).toEqual({ jobs: [job1, job2] })
+      expect(startingState.jobs).toEqual([job1, job2])
     })
   })
 
@@ -24,9 +24,7 @@ describe('mutations', () => {
     it('updates organizations that the user has chosen to filter jobs by', () => {
       const startingState = createState({ selectedOrganizations: [] })
       mutations.ADD_SELECTED_ORGANIZATIONS(startingState, ['Org1', 'Org2'])
-      expect(startingState.selectedOrganizations).toEqual({
-        selectedOrganizations: ['Org1', 'Org2'],
-      })
+      expect(startingState.selectedOrganizations).toEqual(['Org1', 'Org2'])
     })
   })
 
@@ -37,9 +35,7 @@ describe('mutations', () => {
         'Full-time',
         'Part-time',
       ])
-      expect(startingState.selectedJobTypes).toEqual({
-        selectedJobTypes: ['Full-time', 'Part-time'],
-      })
+      expect(startingState.selectedJobTypes).toEqual(['Full-time', 'Part-time'])
     })
   })
 })
