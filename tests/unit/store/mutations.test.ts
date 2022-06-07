@@ -1,5 +1,5 @@
 import mutations from '@/store/mutations'
-import { createState, createJob } from './utils'
+import { createState, createJob, createDegree } from './utils'
 
 describe('mutations', () => {
   describe('LOGIN_USER', () => {
@@ -20,6 +20,15 @@ describe('mutations', () => {
     })
   })
 
+  describe('RECEIVE_DEGREES', () => {
+    it('receives degrees from API response', () => {
+      const startingState = createState({ degrees: [] })
+      const degree = createDegree()
+      mutations.RECEIVE_DEGREES(startingState, [degree])
+      expect(startingState.degrees).toEqual([degree])
+    })
+  })
+
   describe('ADD_SELECTED_ORGANIZATIONS', () => {
     it('updates organizations that the user has chosen to filter jobs by', () => {
       const startingState = createState({ selectedOrganizations: [] })
@@ -36,6 +45,28 @@ describe('mutations', () => {
         'Part-time',
       ])
       expect(startingState.selectedJobTypes).toEqual(['Full-time', 'Part-time'])
+    })
+  })
+
+  describe('ADD_SELECTED_DEGREES', () => {
+    it('updates degrees that the user has chosen to filter jobs by', () => {
+      const startingState = createState({ selectedDegrees: [] })
+      mutations.ADD_SELECTED_DEGREES(startingState, ["Master's"])
+      expect(startingState.selectedDegrees).toEqual(["Master's"])
+    })
+  })
+
+  describe('CLEAR_USER_JOB_FILTER_SELECTIONS', () => {
+    it('removes all job filters the user has chosen', () => {
+      const startingState = createState({
+        selectedOrganizations: ['random org'],
+        selectedJobTypes: ['random jobtype'],
+        selectedDegrees: ['random degree'],
+      })
+      mutations.CLEAR_USER_JOB_FILTER_SELECTIONS(startingState)
+      expect(startingState.selectedOrganizations).toEqual([])
+      expect(startingState.selectedJobTypes).toEqual([])
+      expect(startingState.selectedDegrees).toEqual([])
     })
   })
 })

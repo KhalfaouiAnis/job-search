@@ -5,7 +5,9 @@ import {
   useFilteredJobs,
   useUniqueJobTypes,
   useUniqueOrganizations,
+  useUniqueDegrees,
   useFetchJobsDispatch,
+  useFetchDegreesDispatch,
 } from '@/store/composables'
 
 const useStoreMock = useStore as jest.Mock
@@ -47,12 +49,33 @@ describe('composables', () => {
     expect(result.value).toEqual(new Set(['Apple']))
   })
 
+  describe('useUniqueDegrees', () => {
+    it('retrieves unique degrees from the store', () => {
+      useStoreMock.mockReturnValue({
+        getters: {
+          UNIQUE_DEGREES: ["Master's"],
+        },
+      })
+    })
+    const result = useUniqueDegrees()
+    expect(result.value).toEqual(["Master's"])
+  })
+
   describe('useFetchJobsDispatch', () => {
     it('sends call to fetch jobs from api', () => {
       const dispatch = jest.fn()
       useStoreMock.mockReturnValue({ dispatch })
       useFetchJobsDispatch()
       expect(dispatch).toHaveBeenCalledWith('FETCH_JOB')
+    })
+  })
+
+  describe('useFetchDegreesDispatch', () => {
+    it('sends call to fetch degrees from api', () => {
+      const dispatch = jest.fn()
+      useStoreMock.mockReturnValue({ dispatch })
+      useFetchDegreesDispatch()
+      expect(dispatch).toHaveBeenCalledWith('FETCH_DEGREES')
     })
   })
 })
