@@ -56,17 +56,27 @@ describe('mutations', () => {
     })
   })
 
+  describe('UPDATE_SKILLS_SEARCH_TERM', () => {
+    it('receives saerch term for skills the user has', () => {
+      const startingState = createState({ skillsSearchTerm: '' })
+      mutations.UPDATE_SKILLS_SEARCH_TERM(startingState, 'vue')
+      expect(startingState.skillsSearchTerm).toEqual('vue')
+    })
+  })
+
   describe('CLEAR_USER_JOB_FILTER_SELECTIONS', () => {
     it('removes all job filters the user has chosen', () => {
       const startingState = createState({
         selectedOrganizations: ['random org'],
         selectedJobTypes: ['random jobtype'],
         selectedDegrees: ['random degree'],
+        skillsSearchTerm: 'Java',
       })
       mutations.CLEAR_USER_JOB_FILTER_SELECTIONS(startingState)
       expect(startingState.selectedOrganizations).toEqual([])
       expect(startingState.selectedJobTypes).toEqual([])
       expect(startingState.selectedDegrees).toEqual([])
+      expect(startingState.skillsSearchTerm).toEqual('')
     })
   })
 })

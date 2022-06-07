@@ -1,5 +1,6 @@
 import { useStore } from 'vuex'
 jest.mock('vuex')
+const useStoreMock = useStore as jest.Mock
 
 import {
   useFilteredJobs,
@@ -9,8 +10,6 @@ import {
   useFetchJobsDispatch,
   useFetchDegreesDispatch,
 } from '@/store/composables'
-
-const useStoreMock = useStore as jest.Mock
 
 describe('composables', () => {
   describe('useFilteredJobs', () => {

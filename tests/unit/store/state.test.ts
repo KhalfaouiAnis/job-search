@@ -16,6 +16,11 @@ describe('state', () => {
     expect(startingState.degrees).toEqual([])
   })
 
+  it('stores user search term to skills and qualifications', () => {
+    const startingState = state()
+    expect(startingState.skillsSearchTerm).toBe('')
+  })
+
   it('stores organizations user would like to filer jobs by', () => {
     const startingState = state()
     expect(startingState.selectedOrganizations).toEqual([])
